@@ -1,0 +1,12 @@
+* {
+    font-family: "inter",sans-serif;
+}
+
+body {
+    background-color: #bab8b8;
+}
+
+.add-items-segment{
+    height: 250px;
+    overflow-y: scroll;
+}
