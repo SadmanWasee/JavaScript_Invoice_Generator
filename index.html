@@ -20,65 +20,70 @@
   <div class="bg-dark pt-2 pb-2 text-white text-center">
     <h2>Invoice</h2>
   </div>
-  <div class="col-6">
-    <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5">
-      <h4 class="text-center">Customer Information</h4>
-      <form class="pt-4">
-        <div class="row pb-2">
-          <label class="col-3" for="invoiceNo">Invoice No: </label>
-          <input class="col-8" type="text" name="invoiceNo" id="invoiceNo">
-        </div>
-        <div class="row pb-2">
-          <label class="col-3" for="name">Customer Name:</label>
-          <input class="col-8" type="text" name="name" id="name">
-        </div>
-        <div class="row pb-2">
-          <label class="col-3" for="phone">Phone No:</label>
-          <input class="col-8" type="text" name="phone" id="phone">
-        </div>
-        <div class="row pb-2">
-          <label class="col-3" for="address">Address:</label>
-          <textarea class="col-8" type="text" name="address" id="address"></textarea>
-        </div>
-        <div class="pt-5 pb-2">
-          <h6 class="pb-3">Select Payment Method</h6>
-          <input type="radio" id="visa" name="payment_method" value="Visa">
-          <label for="visa">VISA</label><br>
-          <input type="radio" id="master_card" name="payment_method" value="MasterCard">
-          <label for="css">Master Card</label><br>
-          <input type="radio" id="cash" name="payment_method" value="Cash">
-          <label for="cash">Cash</label>
-        </div>
-      </form>
-    </div>
-    <div class="add-items-segment bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 overflow-y-scroll">
-      <div class="clearfix">
-        <h5 class="float-start">Products:</h5>
-        <button class="btn btn-success p-2 float-end">Add Item</button>
+
+
+  <div class="bg-white border border-dark border-2 w-50 pt-3 ps-2 pb-3 pe-2 m-5 mx-auto">
+    <h4 class="text-center">Customer Information</h4>
+    <form class="pt-4">
+      <div class="row pb-2">
+        <label class="col-3" for="invoiceNo">Invoice No: </label>
+        <input class="col-8" type="text" name="invoiceNo" id="invoiceNo">
       </div>
-
-      <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-2">
-        <div class="clearfix">
-          <button class="btn btn-danger p-0 float-end "><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <form action="">
-          <div class="row pb-2">
-          <label class="col-3" for="productName">Name: </label>
-          <input class="col-8" type="text" name="productName" id="productName">
-        </div>
-        <div class="row pb-2">
-          <label class="col-3" for="rate">Rate:</label>
-          <input class="col-8" type="text" name="rate" id="rate">
-        </div>
-        <div class="row pb-2">
-          <label class="col-3" for="phone">Quality:</label>
-          <input class="col-8" type="text" name="quality" id="quality">
-        </div>
-        </form>
+      <div class="row pb-2">
+        <label class="col-3" for="name">Customer Name:</label>
+        <input class="col-8" type="text" name="name" id="customerName">
       </div>
+      <div class="row pb-2">
+        <label class="col-3" for="phone">Phone No:</label>
+        <input class="col-8" type="text" name="phone" id="phone">
+      </div>
+      <div class="row pb-2">
+        <label class="col-3" for="address">Address:</label>
+        <textarea class="col-8" type="text" name="address" id="address"></textarea>
+      </div>
+      <div class="pt-3 pb-2">
+        <h6>Select Payment Method</h6>
+        <input type="radio" id="visa" name="payment_method" value="Visa">
+        <label for="visa">VISA</label><br>
+        <input type="radio" id="master_card" name="payment_method" value="MasterCard">
+        <label for="css">Master Card</label><br>
+        <input type="radio" id="cash" name="payment_method" value="Cash">
+        <label for="cash">Cash</label>
+      </div>
+    </form>
+  </div>
 
-
+  <div class="add-items-segment bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
+    <div class="clearfix">
+      <h5 class="float-start">Products:</h5>
+      <button onclick="addItem()" class="btn btn-success p-2 float-end">Add Item</button>
     </div>
+    <ul class="list-unstyled" id="product-list">
+    </ul>
+  </div>
+
+  <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
+    <div class="row pb-2">
+      <label class="col-3" for="subtotal">Sub total:</label>
+      <input class="col-8" type="number" name="subtotal" id="subtotal" value="0" readonly>
+    </div>
+    <div class="row pb-2">
+      <label class="col-3" for="tax">Tax:</label>
+      <input class="col-8" type="number" name="tax" id="tax" value="0" min="0">
+    </div>
+    <div class="row pb-2">
+      <label class="col-3" for="discount">Discount:</label>
+      <input class="col-8" type="number" name="discount" id="discount" value="0" min="0">
+    </div>
+    <div class="row pb-2">
+      <label class="col-3" for="total">Total:</label>
+      <input class="col-8" type="number" name="total" id="total" value="0" readonly>
+    </div>
+  </div>
+
+  <div class="bg-white bg-white border border-dark border-2 p-3 m-5 mt-2 w-25 mx-auto text-center">
+    <h4>Are you ready ?</h4>
+    <button onclick="handleSubmit()" class="btn btn-primary">Submit</button>
   </div>
 
   <script src="./script.js"></script>
