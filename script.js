@@ -49,89 +49,126 @@ const addItem = () => {
     close_button.addEventListener("click", () => {
       let clearfixDiv = close_button.parentElement
       let containerDiv = clearfixDiv.parentElement
-      let li =containerDiv.parentElement
+      let li = containerDiv.parentElement
       li.remove()
       updateTotalPrice()
     })
   })
 
   const listItems = product_list.querySelectorAll("li")
-  listItems.forEach((item)=>{
+  listItems.forEach((item) => {
     let quantity = item.querySelector("#quantity");
     let rate = item.querySelector("#rate");
     quantity.addEventListener("input", updateTotalPrice)
-    rate.addEventListener("input", updateTotalPrice )
+    rate.addEventListener("input", updateTotalPrice)
   })
 
   updateTotalPrice()
 }
 
-const updateTotalPrice = () =>{
-  let totalAmount = 0 
+const updateTotalPrice = () => {
+  let totalAmount = 0
 
   const listItems = product_list.querySelectorAll("li")
-  listItems.forEach((item)=>{
-    let quantity = parseFloat(item.querySelector("#quantity").value??1);
-    let rate = parseFloat(item.querySelector("#rate").value??1);
-    let price = ((quantity*rate).toFixed(2))??1
+  listItems.forEach((item) => {
+    let quantity = parseFloat(item.querySelector("#quantity").value ?? 1);
+    let rate = parseFloat(item.querySelector("#rate").value ?? 1);
+    let price = ((quantity * rate).toFixed(2)) ?? 1
     item.querySelector("#total").value = price
     totalAmount += parseFloat(price)
   })
   subTotal.value = parseFloat(totalAmount)
 }
 
-const updateGrandTotal = () =>{
-  total.value = parseFloat(subTotal.value)+parseFloat(tax.value)-parseFloat(discount.value)
+const updateGrandTotal = () => {
+  total.value = parseFloat(subTotal.value) + parseFloat(tax.value) - parseFloat(discount.value)
 }
+
+updateGrandTotal()
+
+subTotal.addEventListener("input", updateGrandTotal)
+tax.addEventListener("input", updateGrandTotal)
+discount.addEventListener("input", updateGrandTotal)
 
 const handleSubmit = () => {
   for (let i = 0; i < radioButtons.length; i++) {
+
     if (radioButtons[i].checked) {
       payment_method = radioButtons[i].value;
       break;
     }
   }
 
-
-  let data = {
-    invoiceNumber: `${invoiceNo.value}`,
-    name: `${customerName.value}`,
-    phoneNumber: `${phoneNo.value}`,
-    address: `${address.value}`,
-    paymentMethod: `${payment_method.value}`,
-    product_list:[],
-    subTotal:`${subTotal.value}`,
-    tax:`${tax.value}`,
-    discount:`${discount.value}`,
-    total:`${total.value}`
-  }
+  let product_details_given = true;
 
   const listItems = product_list.querySelectorAll("li")
-  if(listItems.length>0){
-    listItems.forEach((item)=>{
-    let name = item.querySelector("#productName").value;
-    let quantity = item.querySelector("#quantity").value;
-    let rate = item.querySelector("#rate").value;
-    let total = item.querySelector("#total").value;
-    let obj = {
-      name:name, 
-      quantity:quantity,
-      rate:rate,
-      total:total      
+  if (listItems.length > 0) {
+    for (let item of listItems) {
+
+      let name = item.querySelector("#productName").value;
+      let quantity = item.querySelector("#quantity").value;
+      let rate = item.querySelector("#rate").value;
+      let total = item.querySelector("#total").value;
+
+      if ((name && quantity && rate && total) == "") {
+        product_details_given = false;
+        break;
+      }
     }
-    data.product_list.push(obj);
-  })
   }
-  
-  let output = JSON.stringify(data)
-  console.log(output)
+
+  let form_filled = (invoiceNo.value &&
+    customerName.value &&
+    phoneNo.value &&
+    address.value &&
+    payment_method &&
+    subTotal.value &&
+    tax.value &&
+    discount.value) != ""
+
+  if (form_filled && product_details_given) {
+
+    let data = {
+      invoiceNumber: `${invoiceNo.value}`,
+      name: `${customerName.value}`,
+      phoneNumber: `${phoneNo.value}`,
+      address: `${address.value}`,
+      paymentMethod: `${payment_method}`,
+      product_list: [],
+      subTotal: `${subTotal.value}`,
+      tax: `${tax.value}`,
+      discount: `${discount.value}`,
+      total: `${total.value}`
+    }
+
+
+    if (listItems.length > 0) {
+      listItems.forEach((item) => {
+        let name = item.querySelector("#productName").value;
+        let quantity = item.querySelector("#quantity").value;
+        let rate = item.querySelector("#rate").value;
+        let total = item.querySelector("#total").value;
+        let obj = {
+          name: name,
+          quantity: quantity,
+          rate: rate,
+          total: total
+        }
+        data.product_list.push(obj);
+      })
+    }
+
+    let output = JSON.stringify(data)
+    console.log(output)
+
+  }
+  else {
+    alert("All fields must be filled")
+  }
+
 }
 
-updateGrandTotal()
 
-subTotal.addEventListener("input",updateGrandTotal)
-tax.addEventListener("input",updateGrandTotal)
-discount.addEventListener("input",updateGrandTotal)
 
 
 
