@@ -27,11 +27,11 @@
     <form class="pt-4">
       <div class="row pb-2">
         <label class="col-3" for="invoiceNo">Invoice No: </label>
-        <input class="col-8" type="text" name="invoiceNo" id="invoiceNo">
+        <input class="col-8" type="text" name="invoice-no" id="invoice-no">
       </div>
       <div class="row pb-2">
         <label class="col-3" for="name">Customer Name:</label>
-        <input class="col-8" type="text" name="name" id="customerName">
+        <input class="col-8" type="text" name="name" id="customer-name">
       </div>
       <div class="row pb-2">
         <label class="col-3" for="phone">Phone No:</label>
@@ -43,11 +43,11 @@
       </div>
       <div class="pt-3 pb-2">
         <h6>Select Payment Method</h6>
-        <input type="radio" id="visa" name="payment_method" value="Visa">
+        <input type="radio" id="visa" name="payment-method" value="Visa">
         <label for="visa">VISA</label><br>
-        <input type="radio" id="master_card" name="payment_method" value="MasterCard">
+        <input type="radio" id="master_card" name="payment-method" value="MasterCard">
         <label for="css">Master Card</label><br>
-        <input type="radio" id="cash" name="payment_method" value="Cash">
+        <input type="radio" id="cash" name="payment-method" value="Cash">
         <label for="cash">Cash</label>
       </div>
     </form>
@@ -59,6 +59,8 @@
       <button onclick="addItem()" class="btn btn-success p-2 float-end">Add Item</button>
     </div>
     <ul class="list-unstyled" id="product-list">
+
+
     </ul>
   </div>
 
@@ -86,6 +88,90 @@
     <button onclick="handleSubmit()" class="btn btn-primary">Submit</button>
   </div>
 
+  <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
+    <h3 class="text-center">Invoice : <input class="w-25 border-0" id="invoice-number-print" type="text" readonly
+        disabled></h3>
+    <div class="row">
+      <label class="col-3" for="customer-name-print">Name</label>
+      <input type="text" class="border-0 col-8" id="customer-name-print" name="customer-name-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="phone-number-print">Phone Number:</label>
+      <input type="number" class="border-0 col-8" id="phone-number-print" name="phone-number-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="address-print">Address:</label>
+      <textarea class="border-0 col-8" name="address-print" id="address-print" rows="5" readonly disabled></textarea>
+    </div>
+    <div class="row">
+      <label class="col-3" for="phone-number-print">Payment Method:</label>
+      <input type="text" class="border-0 col-8" id="phone-number-print" name="phone-number-print" readonly disabled>
+    </div>
+    <h5>Products:</h5>
+    <ul class="products-list-print">
+
+    </ul>
+    <div class="row">
+      <label class="col-3" for="sub-total-print">Sub Total:</label>
+      <input type="number" class="border-0 col-8" id="sub-total-print" name="sub-total-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="phone-number-print">Tax:</label>
+      <input type="number" class="border-0 col-8" id="tax-print" name="tax-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="discount-print">discount:</label>
+      <input type="number" class="border-0 col-8" id="discount-print" name="discount-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="total-print">total:</label>
+      <input type="number" class="border-0 col-8" id="total-print" name="total-print" readonly disabled>
+    </div>
+  </div>
+
+  <div class="item" id="item">
+    <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-2">
+      <div class="clearfix">
+        <button id="close-button" class="btn btn-danger p-0 float-end "><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form action="">
+        <div class="row pb-2">
+          <label class="col-3" for="productName">Name: </label>
+          <input class="col-8" type="text" name="product-name" id="product-name">
+        </div>
+        <div class="row pb-2">
+          <label class="col-3" for="rate">Rate:</label>
+          <input class="col-8" type="number" name="rate" id="rate" value="1" min="1">
+        </div>
+        <div class="row pb-2">
+          <label class="col-3" for="quantity">Quantity:</label>
+          <input class="col-8" type="number" name="quantity" id="quantity" value="1" min="1">
+        </div>
+        <div class="row pb-2">
+          <label class="col-3" for="total">Total:</label>
+          <input class="col-8" type="number" name="total" id="total" value="1" min="1" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="item-print">
+    <div class="row">
+      <label class="col-3" for="product-name-print">Product Name:</label>
+      <input type="number" class="border-0 col-8" id="product-name-print" name="product-name-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="rate-print">Rate</label>
+      <input type="number" class="border-0 col-8" id="rate-print" name="rate-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="quantity-print">Quantity</label>
+      <input type="number" class="border-0 col-8" id="quantity-print" name="quantity-print" readonly disabled>
+    </div>
+    <div class="row">
+      <label class="col-3" for="product-total-print">Total:</label>
+      <input type="number" class="border-0 col-8" id="product-total-print" name="product-total-print" readonly disabled>
+    </div>
+  </div>
   <script src="./script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

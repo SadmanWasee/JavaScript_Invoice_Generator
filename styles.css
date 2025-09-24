@@ -5,3 +5,11 @@
 body {
     background-color: #bab8b8;
 }
+
+.item {
+    display: none;
+}
+
+.item-print {
+    display: none;
+}
