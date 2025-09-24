@@ -13,3 +13,11 @@ body {
 .item-print {
     display: none;
 }
+
+.invoice-print {
+    display: none;
+}
+
+.submit-button-box{
+    display: block;
+}

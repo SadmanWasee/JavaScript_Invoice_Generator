@@ -83,14 +83,14 @@
     </div>
   </div>
 
-  <div class="bg-white bg-white border border-dark border-2 p-3 m-5 mt-2 w-25 mx-auto text-center">
+  <div id="submit-button-box" class="submit-button-box bg-white bg-white border border-dark border-2 p-3 m-5 mt-2 w-25 mx-auto text-center">
     <h4>Are you ready ?</h4>
     <button onclick="handleSubmit()" class="btn btn-primary">Submit</button>
   </div>
 
-  <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
+  <div id="invoice-print" class="invoice-print bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
     <h3 class="text-center">Invoice : <input class="w-25 border-0" id="invoice-number-print" type="text" readonly
-        disabled></h3>
+        disabled><button class="btn btn-danger float-end" id="refresh-button">Refresh</button></h3>
     <div class="row">
       <label class="col-3" for="customer-name-print">Name</label>
       <input type="text" class="border-0 col-8" id="customer-name-print" name="customer-name-print" readonly disabled>
@@ -104,11 +104,11 @@
       <textarea class="border-0 col-8" name="address-print" id="address-print" rows="5" readonly disabled></textarea>
     </div>
     <div class="row">
-      <label class="col-3" for="phone-number-print">Payment Method:</label>
-      <input type="text" class="border-0 col-8" id="phone-number-print" name="phone-number-print" readonly disabled>
+      <label class="col-3" for="payment-method-print">Payment Method:</label>
+      <input type="text" class="border-0 col-8" id="payment-method-print" name="payment-method-print" readonly disabled>
     </div>
     <h5>Products:</h5>
-    <ul class="products-list-print">
+    <ul class="products-list-print list-unstyled" id="products-list-print">
 
     </ul>
     <div class="row">
@@ -154,10 +154,10 @@
       </form>
     </div>
   </div>
-  <div class="item-print">
+  <div class="item-print" id="item-print">
     <div class="row">
       <label class="col-3" for="product-name-print">Product Name:</label>
-      <input type="number" class="border-0 col-8" id="product-name-print" name="product-name-print" readonly disabled>
+      <input type="text" class="border-0 col-8" id="product-name-print" name="product-name-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="rate-print">Rate</label>

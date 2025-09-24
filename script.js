@@ -7,10 +7,11 @@ const subTotal = document.getElementById("subtotal");
 const tax = document.getElementById("tax");
 const discount = document.getElementById("discount");
 const total = document.getElementById("total");
+const submitButtonBox = document.getElementById("submit-button-box")
 
 const radioButtons = document.getElementsByName("payment-method");
 
-let paymentMethod = null;
+let paymentMethod = "";
 
 
 
@@ -91,21 +92,21 @@ const handleSubmit = () => {
       let rate = item.querySelector("#rate").value;
       let total = item.querySelector("#total").value;
 
-      if ((name == "")|| (quantity == "") || (rate == "") || (total == "")) {
+      if ((name == "") || (quantity == "") || (rate == "") || (total == "")) {
         product_details_given = false;
         break;
       }
     }
   }
 
-  let form_filled = ((invoiceNo.value!= "") &&
-    (customerName.value!= "") &&
-    (phoneNo.value!= "") &&
-    (address.value!= "") &&
-    (paymentMethod!= "") &&
-    (subTotal.value!= "") &&
-    (tax.value!= "") &&
-    (discount.value!= ""))
+  let form_filled = ((invoiceNo.value != "") &&
+    (customerName.value != "") &&
+    (phoneNo.value != "") &&
+    (address.value != "") &&
+    (paymentMethod != "") &&
+    (subTotal.value != "") &&
+    (tax.value != "") &&
+    (discount.value != ""))
 
   if (form_filled && product_details_given) {
 
@@ -114,14 +115,13 @@ const handleSubmit = () => {
       name: `${customerName.value}`,
       phoneNumber: `${phoneNo.value}`,
       address: `${address.value}`,
-      paymentMethod: `${paymentMethod}`,
+      paymentMethod: paymentMethod,
       productList: [],
       subTotal: `${subTotal.value}`,
       tax: `${tax.value}`,
       discount: `${discount.value}`,
       total: `${total.value}`
     }
-
 
     if (listItems.length > 0) {
       listItems.forEach((item) => {
@@ -138,8 +138,56 @@ const handleSubmit = () => {
         data.productList.push(obj);
       })
     }
+    
+
+    let invoicePrint = document.getElementById("invoice-print")
+    
+    let invoiceNumberPrint = document.getElementById("invoice-number-print");
+    let customerNamePrint = document.getElementById("customer-name-print");
+    let phoneNumberPrint = document.getElementById("phone-number-print");
+    let addressPrint = document.getElementById("address-print");
+    let paymentMethodPrint = document.getElementById("payment-method-print");
+    let subTotalPrint = document.getElementById("sub-total-print");
+    let taxPrint = document.getElementById("tax-print");
+    let discountPrint = document.getElementById("discount-print");
+    let totalPrint = document.getElementById("total-print");
+    let productListPrint = document.getElementById("products-list-print")
+
+    invoicePrint.style.display = "block";
+    submitButtonBox.style.display = "none";
+
+
+    invoiceNumberPrint.value = data.invoiceNumber;
+    invoiceNumberPrint.value = data.invoiceNumber;
+    customerNamePrint.value = data.name;
+    phoneNumberPrint.value = data.phoneNumber;
+    addressPrint.value = data.address;
+    console.log(data.paymentMethod);
+    paymentMethodPrint.value = data.paymentMethod;
+    subTotalPrint.value = data.subTotal;
+    taxPrint.value = data.tax;
+    discountPrint.value = data.discount;
+    totalPrint.value = data.total;
+
+    for (let item of data.productList) {
+      let li = document.createElement('li');
+      let product = document.getElementById("item-print")
+      li.innerHTML = product.innerHTML;
+      productListPrint.appendChild(li);
+      let entry = productListPrint.lastElementChild
+
+      entry.querySelector("#product-name-print").value = item.name;
+      entry.querySelector("#rate-print").value = item.rate;
+      entry.querySelector("#quantity-print").value = item.quantity;
+      entry.querySelector("#product-total-print").value = item.total;
+    }
 
     console.log(data)
+    let refreshButton = document.getElementById("refresh-button")
+
+    refreshButton.addEventListener("click",()=>{
+      window.location.reload()
+    })
 
   }
   else {
