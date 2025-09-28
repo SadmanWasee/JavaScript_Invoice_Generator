@@ -27,11 +27,11 @@
     <form class="pt-4">
       <div class="row pb-2">
         <label class="col-3" for="invoiceNo">Invoice No: </label>
-        <input class="col-8" type="text" name="invoice-no" id="invoice-no">
+        <input class="col-8" type="text" name="invoice-no" id="invoice_no">
       </div>
       <div class="row pb-2">
         <label class="col-3" for="name">Customer Name:</label>
-        <input class="col-8" type="text" name="name" id="customer-name">
+        <input class="col-8" type="text" name="name" id="customer_name">
       </div>
       <div class="row pb-2">
         <label class="col-3" for="phone">Phone No:</label>
@@ -58,7 +58,7 @@
       <h5 class="float-start">Products:</h5>
       <button onclick="addItem()" class="btn btn-success p-2 float-end">Add Item</button>
     </div>
-    <ul class="list-unstyled" id="product-list">
+    <ul class="list-unstyled" id="product_list">
 
 
     </ul>
@@ -83,61 +83,61 @@
     </div>
   </div>
 
-  <div id="submit-button-box" class="submit-button-box bg-white bg-white border border-dark border-2 p-3 m-5 mt-2 w-25 mx-auto text-center">
+  <div id="submit_button_box" class="submit-button-box bg-white bg-white border border-dark border-2 p-3 m-5 mt-2 w-25 mx-auto text-center">
     <h4>Are you ready ?</h4>
     <button onclick="handleSubmit()" class="btn btn-primary">Submit</button>
   </div>
 
-  <div id="invoice-print" class="invoice-print bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
-    <h3 class="text-center">Invoice : <input class="w-25 border-0" id="invoice-number-print" type="text" readonly
-        disabled><button class="btn btn-danger float-end" id="refresh-button">Refresh</button></h3>
+  <div id="invoice_print" class="invoice-print bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-5 mt-2 w-50 mx-auto">
+    <h3 class="text-center">Invoice : <input class="w-25 border-0" id="invoice_number_print" type="text" readonly
+        disabled><button class="btn btn-danger float-end" id="refresh_button">Refresh</button></h3>
     <div class="row">
       <label class="col-3" for="customer-name-print">Name</label>
-      <input type="text" class="border-0 col-8" id="customer-name-print" name="customer-name-print" readonly disabled>
+      <input type="text" class="border-0 col-8" id="customer_name_print" name="customer-name-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="phone-number-print">Phone Number:</label>
-      <input type="number" class="border-0 col-8" id="phone-number-print" name="phone-number-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="phone_number_print" name="phone-number-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="address-print">Address:</label>
-      <textarea class="border-0 col-8" name="address-print" id="address-print" rows="5" readonly disabled></textarea>
+      <textarea class="border-0 col-8" name="address-print" id="address_print" rows="5" readonly disabled></textarea>
     </div>
     <div class="row">
       <label class="col-3" for="payment-method-print">Payment Method:</label>
-      <input type="text" class="border-0 col-8" id="payment-method-print" name="payment-method-print" readonly disabled>
+      <input type="text" class="border-0 col-8" id="payment_method_print" name="payment-method-print" readonly disabled>
     </div>
     <h5>Products:</h5>
-    <ul class="products-list-print list-unstyled" id="products-list-print">
+    <ul class="products-list-print list-unstyled" id="products_list_print">
 
     </ul>
     <div class="row">
       <label class="col-3" for="sub-total-print">Sub Total:</label>
-      <input type="number" class="border-0 col-8" id="sub-total-print" name="sub-total-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="sub_total_print" name="sub-total-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="phone-number-print">Tax:</label>
-      <input type="number" class="border-0 col-8" id="tax-print" name="tax-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="tax_print" name="tax-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="discount-print">discount:</label>
-      <input type="number" class="border-0 col-8" id="discount-print" name="discount-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="discount_print" name="discount-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="total-print">total:</label>
-      <input type="number" class="border-0 col-8" id="total-print" name="total-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="total_print" name="total-print" readonly disabled>
     </div>
   </div>
 
   <div class="item" id="item">
     <div class="bg-white border border-dark border-2 pt-3 ps-2 pb-3 pe-2 m-2">
       <div class="clearfix">
-        <button id="close-button" class="btn btn-danger p-0 float-end "><i class="fa-solid fa-xmark"></i></button>
+        <button id="close_button" class="btn btn-danger p-0 float-end "><i class="fa-solid fa-xmark"></i></button>
       </div>
       <form action="">
         <div class="row pb-2">
           <label class="col-3" for="productName">Name: </label>
-          <input class="col-8" type="text" name="product-name" id="product-name">
+          <input class="col-8" type="text" name="product-name" id="product_name">
         </div>
         <div class="row pb-2">
           <label class="col-3" for="rate">Rate:</label>
@@ -154,22 +154,22 @@
       </form>
     </div>
   </div>
-  <div class="item-print" id="item-print">
+  <div class="item-print" id="item_print">
     <div class="row">
       <label class="col-3" for="product-name-print">Product Name:</label>
-      <input type="text" class="border-0 col-8" id="product-name-print" name="product-name-print" readonly disabled>
+      <input type="text" class="border-0 col-8" id="product_name_print" name="product-name-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="rate-print">Rate</label>
-      <input type="number" class="border-0 col-8" id="rate-print" name="rate-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="rate_print" name="rate-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="quantity-print">Quantity</label>
-      <input type="number" class="border-0 col-8" id="quantity-print" name="quantity-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="quantity_print" name="quantity-print" readonly disabled>
     </div>
     <div class="row">
       <label class="col-3" for="product-total-print">Total:</label>
-      <input type="number" class="border-0 col-8" id="product-total-print" name="product-total-print" readonly disabled>
+      <input type="number" class="border-0 col-8" id="product_total_print" name="product-total-print" readonly disabled>
     </div>
   </div>
   <script src="./script.js"></script>
